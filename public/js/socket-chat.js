@@ -11,7 +11,7 @@ var usuario = {
 socket.on('connect', function() {
     console.log('Conectado al servidor');
     socket.emit('EntradaChat', usuario, function(resp) {
-        console.log(resp);
+        renderizarUsuarios(resp);
     });
 });
 socket.on('disconnect', function() {
@@ -24,13 +24,10 @@ socket.on('disconnect', function() {
 //     console.log('respuesta server: ', resp);
 // });
 socket.on('crearMensaje', function(resp) {
-    console.log(resp);
-});
-socket.on('MensajeServer', function(resp) {
-    console.log('Admin:', resp);
+    renderizarMensaje(resp);
 });
 socket.on('ListarPersonas', function(resp) {
-    console.log(resp);
+    renderizarUsuarios(resp);
 });
 
 socket.on('MensajePrivado', function(resp) {
